@@ -1,6 +1,5 @@
 package day01
 
-import println
 import readInput
 
 fun main() {
@@ -12,11 +11,7 @@ class Day01 {
     val testInput = readInput("resources/day01/data_test")
     val allNumbers = listOf("one", "two", "three", "four", "five", "six", "seven", "eight", "nine")
 
-    fun part2(input: List<String>): Int = input.sumOf {
-        val rowValue = getCalibrationValue(it) ?: 0
-        rowValue.println()
-        rowValue
-    }
+    fun part2(input: List<String>): Int = input.sumOf { getCalibrationValue(it) ?: 0 }
 
     fun getAllNumbers(input: String): String {
         val indexedNumbers = buildMap {
@@ -26,17 +21,12 @@ class Day01 {
                 }
             }
             allNumbers.forEach { numberString ->
-                val found = input.indexOf(numberString)
-                if (found != -1) {
+                var foundAll = input.indexOf(numberString)
+                while (foundAll >= 0){
                     stringToNumber(numberString)?.let {
-                        put(found, it)
+                        put(foundAll, it)
                     }
-                }
-                val foundLast = input.lastIndexOf(numberString)
-                if (foundLast != -1) {
-                    stringToNumber(numberString)?.let {
-                        put(foundLast, it)
-                    }
+                    foundAll = input.indexOf(numberString, foundAll+1)
                 }
             }
         }
@@ -44,11 +34,8 @@ class Day01 {
         return indexedNumbers.toSortedMap().values.joinToString("")
     }
 
-    fun getCalibrationValue(input: String): Int? {
-        val onlyNumbers = getAllNumbers(input)
-        return if (onlyNumbers.isNotEmpty())
-            "${onlyNumbers.first()}${onlyNumbers.last()}".toIntOrNull()
-        else 0
+    fun getCalibrationValue(input: String): Int? = getAllNumbers(input).let { onlyNumbers ->
+        "${onlyNumbers.first()}${onlyNumbers.last()}".toIntOrNull()
     }
 
     fun stringToNumber(string: String): Int? = when (string) {

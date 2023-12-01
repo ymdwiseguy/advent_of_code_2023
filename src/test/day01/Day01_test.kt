@@ -15,6 +15,11 @@ class Day01Test {
     }
 
     @Test
+    fun `result part 2`() {
+         day.part2(day.input) shouldBe 54985
+    }
+
+    @Test
     fun `sample for more than one same number`() {
          day.getAllNumbers("eighttkbtzjz6nineeight") shouldBe "8698"
     }
