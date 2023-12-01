@@ -15,13 +15,18 @@ class Day01Test {
     }
 
     @Test
+    fun `result part 1`() {
+         day.part1(day.input) shouldBe 55130
+    }
+
+    @Test
     fun `result part 2`() {
          day.part2(day.input) shouldBe 54985
     }
 
     @Test
     fun `sample for more than one same number`() {
-         day.getAllNumbers("eighttkbtzjz6nineeight") shouldBe "8698"
+         day.getAllNumbersAdvanced("eighttkbtzjz6nineeight") shouldBe "8698"
     }
 
     @Test
@@ -33,13 +38,13 @@ class Day01Test {
 
     @Test
     fun `get all numbers`() {
-        day.getAllNumbers(input[0]) shouldBe "219"
-        day.getAllNumbers(input[1]) shouldBe "823"
-        day.getAllNumbers(input[2]) shouldBe "123"
-        day.getAllNumbers(input[3]) shouldBe "2134"
-        day.getAllNumbers(input[4]) shouldBe "49872"
-        day.getAllNumbers(input[5]) shouldBe "18234"
-        day.getAllNumbers(input[6]) shouldBe "76"
+        day.getAllNumbersAdvanced(input[0]) shouldBe "219"
+        day.getAllNumbersAdvanced(input[1]) shouldBe "823"
+        day.getAllNumbersAdvanced(input[2]) shouldBe "123"
+        day.getAllNumbersAdvanced(input[3]) shouldBe "2134"
+        day.getAllNumbersAdvanced(input[4]) shouldBe "49872"
+        day.getAllNumbersAdvanced(input[5]) shouldBe "18234"
+        day.getAllNumbersAdvanced(input[6]) shouldBe "76"
     }
     @Test
     fun `get calibration value for line`() {
