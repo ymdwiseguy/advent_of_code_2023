@@ -17,7 +17,8 @@ class Day02Test {
 
     @Test
     fun `part 2`() {
-         day.part2(input) shouldBe 2286
+         day.part2(day.testInput) shouldBe 2286
+         day.part2(day.input) shouldBe 71535
     }
 
     @Test

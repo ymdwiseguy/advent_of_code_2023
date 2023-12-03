@@ -1,6 +1,7 @@
 package day02
 
 import day02.CubeColor.*
+import multiplied
 import readInput
 
 fun main() {
@@ -63,8 +64,8 @@ data class Game(
         }
     }
 
-    fun power(): Int = CubeColor.entries.multiplied {
-        maxOf(it)
+    fun power(): Int = CubeColor.entries.multiplied { cubeColor ->
+        maxOf(cubeColor)
     }
 
 }
@@ -86,12 +87,4 @@ enum class CubeColor {
         GREEN -> 13
         BLUE -> 14
     }
-}
-
-inline fun <T> Iterable<T>.multiplied(selector: (T) -> Int): Int {
-    var multiplication = 1
-    for (element in this) {
-        multiplication *= selector(element)
-    }
-    return multiplication
 }
